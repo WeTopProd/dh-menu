@@ -58,19 +58,28 @@ def send_email(request):
     locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8')
     date = now.strftime("%d %B %Y, %A %H:%M")
     description = request.data.get('description', '')
-    goods_id = request.data.get('goods_id', '')
-    count_goods = request.data.get('count_goods', '')
-    price_goods = request.data.get('price_goods', '')
-    goods = get_object_or_404(Goods, pk=goods_id)
+    goods_ids = request.data.get('goods_id', [])
+    count_goods = request.data.get('count_goods', [])
+    price_goods = request.data.get('price_goods', [])
+    final_price = request.data.get('final_price', '')
+    goods_list = Goods.objects.filter(pk__in=goods_ids)
+
     first_name = user.first_name
     last_name = user.last_name
     phone = user.phone
     email_user = user.email
+
     message = (f"ЗАКАЗ ОТ {last_name} {first_name}\n\n"
                f"НОМЕР ТЕЛЕФОНА: {phone}\nПОЧТА: {email_user}\n\n"
                f"КОММЕНТАРИЙ ОТ ПОЛЬЗОВАТЕЛЯ:\n{description}\n\n"
-               f"ЗАКАЗ:\nДАТА ЗАКАЗА: {date}\nТОВАР: {goods.title}\n"
-               f"КОЛИЧЕСТВО: {count_goods}\nЦЕНА: {price_goods}")
+               f"ЗАКАЗ:\nДАТА ЗАКАЗА: {date}\n\n")
+
+    for i, goods in enumerate(goods_list):
+        message += (f"ТОВАР {i + 1}:\n"
+                    f"НАЗВАНИЕ: {goods.title}\n"
+                    f"КОЛИЧЕСТВО: {count_goods[i]}\n"
+                    f"ЦЕНА: {price_goods[i]}\n\n")
+    message += f"ОБЩАЯ СУММА: {final_price}"
     send_mail(
         f"ЗАКАЗ ОТ {last_name} {first_name}",
         message,
