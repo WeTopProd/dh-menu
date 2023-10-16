@@ -1,0 +1,64 @@
+.hookahElements {
+  margin-top: 45px;
+}
+
+.hookahElement {
+  border: 2px solid #78EAFF;
+  width: 100%;
+  height: 375px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  background: rgba(51, 51, 51, 0.30);
+  box-shadow: 0 0 10px #78EAFF;
+  margin-bottom: 20px;
+
+  &__desc {
+    &_price {
+      color: #FFF;
+      font-family: Lato;
+      font-size: 23.532px;
+      margin-top: 92px;
+    }
+
+    &_name {
+      z-index: 1;
+      color: #FFF;
+      font-family: tangak;
+      font-size: 23.532px;
+      text-align: center;
+
+      &_item-active{
+        p{
+          color: #FF00A2;
+        }
+      }
+    }
+  }
+
+  .basketButton__basket-icon{
+    display: flex;
+    justify-content: center;
+
+    button {
+      background: rgba(87, 171, 190, 0.5);
+      width: 87px;
+      height: 44px;
+      padding: 5px 19px;
+      border-radius: 6.788px;
+      border: none;
+      box-shadow: 0 2.5454545021px 8.4848489761px 0 rgba(0, 0, 0, 0.15);
+      img{
+        height: 100%;
+      }
+    }
+  }
+
+  .basketButton {
+    z-index: 1;
+  }
+}
+
+
+

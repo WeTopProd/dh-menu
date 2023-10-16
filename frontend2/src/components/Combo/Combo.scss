@@ -1,0 +1,96 @@
+.combo {
+  width: 90%;
+  border-radius: 7.011px;
+  border: 1.87px solid var(--Orange, #F2994A);
+  background: #FFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__img {
+    max-width: 100%;
+    width: 100%;
+    min-height: 210px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #F2994A;
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  &__desc {
+    max-width: 250px;
+    width: 100%;
+    min-height: 170px;
+
+    &_title {
+      font-weight: 800;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    &_nameItems {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+
+      &_item {
+        font-size: 10px;
+        font-weight: 800;
+        text-align: center;
+        margin-top: 15px;
+      }
+    }
+
+    &_weight {
+      width: 100%;
+      margin-bottom: 18px;
+      margin-top: 20px;
+      font-family: system-ui;
+      font-size: 12px;
+      font-weight: 300;
+      text-align: center;
+    }
+
+    &_price {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+
+      &_text {
+        font-family: Prosto One;
+        font-size: 15.892px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+
+//media
+
+
+
+@media screen and (max-width: 350px) {
+  .combo__desc_active_title p {
+    font-size: 17px;
+  }
+
+  .basketBtnActive button p {
+    font-size: 13px !important;
+  }
+
+  .combo__desc_active_price p {
+    font-size: 17px;
+  }
+}

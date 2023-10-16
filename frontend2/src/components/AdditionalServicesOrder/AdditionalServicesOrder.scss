@@ -1,0 +1,172 @@
+.addSerOrder {
+  background: url("../../assets/images/img/backgroundDop.png") top no-repeat;
+  background-size: cover;
+  padding: 15px 15px 50px 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &__desc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &_items {
+      width: 95%;
+      margin-top: 76px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+
+      &_item{
+        min-height: 30px;
+      }
+
+      &_item {
+        color: #FFF;
+        font-size: 21px;
+        padding-left: 10px;
+        display: flex;
+        justify-content: space-between;
+
+        &_active {
+          color: #F2994A;
+        }
+      }
+    }
+
+    &_title {
+      color: #FFF;
+      font-size: 30px;
+    }
+
+    &_comment {
+      height: 123px;
+      width: 95%;
+      margin-top: 40px;
+      border-radius: 10px;
+      background: rgba(13, 13, 13, 0.80);
+      color: #FFF;
+      font-family: Prosto One;
+      font-size: 15px;
+      outline: none;
+      padding: 9px 11px;
+      border: 2px solid var(--Orange, #F2994A);
+
+      &::placeholder {
+        color: #FFFFFF;
+      }
+    }
+
+    &_button {
+      width: 160px;
+      height: 49px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      background: #F2994A;
+      color: #FFF;
+      font-family: Prosto One;
+      font-size: 20px;
+      margin-top: 30px;
+      border: none;
+    }
+
+    &_dish {
+      width: 100%;
+      font-size: 25px;
+      color: white;
+      text-decoration: underline;
+      margin-top: 20px;
+    }
+  }
+}
+
+
+
+.addSerOrderButton {
+  display: flex;
+  justify-content: center;
+
+  &__counter {
+    display: flex;
+    align-items: center;
+
+    &_count {
+      display: flex;
+      align-items: center;
+
+      p {
+        min-width: 30px;
+        font-size: 23px;
+        text-align: center;
+        color: #FFFFFF;
+      }
+
+      &_button {
+        width: 20px;
+        height: 20px;
+        font-size: 15px;
+        display: flex;
+        background: #F2994A;
+        align-items: center;
+        justify-content: center;
+        border: 2.5px solid #F2994A;
+        border-radius: 50%;
+        color: #FFF;
+        font-family: Prosto One;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%;
+        cursor: pointer;
+      }
+    }
+
+    &_btnIcon {
+      button {
+        padding: 5px 19px;
+        border-radius: 6.788px;
+        background: #F2994A;
+        border: none;
+        box-shadow: 0 2.545454502105713px 8.484848976135254px 0 rgba(0, 0, 0, 0.15);
+        width: 56px;
+        height: 28px;
+        img{
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+// media
+
+@media screen and (max-width: 350px) {
+  .basketButton__basket-text button {
+    font-size: 12px!important;
+  }
+}
+
+
+
+//media
+
+@media screen and (max-width: 420px) {
+  .addSerOrder__desc_type {
+    max-width: 350px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 393px) {
+  .addSerOrder__desc_items_item {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 345px) {
+  .addSerOrder__desc_items_item {
+    font-size: 15px;
+  }
+}

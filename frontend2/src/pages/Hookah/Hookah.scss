@@ -1,0 +1,35 @@
+.hookah {
+  background: url("../../assets/images/hookah/hookah-still.png") top center;
+  background-size: cover;
+  position: relative;
+  padding: 23px 15px 15px 15px;
+  flex: 1;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-size: cover;
+    z-index: 1;
+
+    &_title {
+      display: block;
+      position: relative;
+      z-index: 1;
+      color: #FFF;
+      font-family: Prosto One;
+      font-size: 30px;
+      text-transform: capitalize;
+      text-align: center;
+    }
+  }
+}
+
+
+//media
+
+@media screen and (max-width: 393px) {
+  .hookah__container p {
+    font-size: 22px;
+  }
+}

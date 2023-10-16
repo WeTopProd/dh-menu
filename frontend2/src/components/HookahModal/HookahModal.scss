@@ -1,0 +1,85 @@
+.hookahModal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 57px;
+  left: 11px;
+
+
+  &__desc {
+    border-radius: 10px;
+    border: 2px solid #90E8FA;
+    background: rgba(0, 0, 0, 0.90);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px 26px;
+    width:  178px;
+    height:  369px;
+
+    &_title {
+      color: #90E8FA;
+      font-size: 23.532px;
+      font-family: monospace;
+      width: 100%;
+      text-align: center;
+      margin-bottom: -10px;
+    }
+
+    &_elem {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+
+      p {
+        color: #FFF;
+        font-family: Lato;
+        font-size: 20px;
+      }
+
+      span {
+        width: 19px;
+        height: 19px;
+        border-radius: 50%;
+        border: 1px solid white;
+      }
+    }
+
+    &__button {
+      max-width: 153px;
+      width: 100%;
+      height: 30px;
+      border-radius: 5px;
+      border: 2px solid #CDA33D;
+      color: #FFF;
+      font-family: Prosto One;
+      font-size: 20px;
+      margin: 33px 0 35px 0;
+    }
+  }
+}
+
+
+//media
+
+@media  screen and (max-width: 390px) {
+  .hookahModal__desc {
+    margin-left: 5px;
+  }
+
+  .hookahModal__desc__item p {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .hookahModal__desc {
+    margin-left: 2px;
+  }
+}
