@@ -3,6 +3,7 @@ import './AdditionalServicesOrder.scss'
 import {api} from "../../api";
 import RegisterActive from "../RegisterActive/RegisterActive";
 import BasketIcon from "../../assets/images/basket/BasketIcon.png";
+import {useNavigate} from "react-router-dom";
 
 
 const AdditionalServicesOrder = () => {
@@ -10,6 +11,7 @@ const AdditionalServicesOrder = () => {
     const [selected, setSelected] = useState([])
     const [ordered, setOrdered] = useState(false)
     const [comment, setComment] = useState("")
+    const navigate = useNavigate();
 
     useEffect(() => {
         api.goodsApi.getList({type: "Доп Услуги"}).then(res => {
@@ -57,10 +59,13 @@ const AdditionalServicesOrder = () => {
             goods_id: selected.filter(s => s.count > 0).map(s => s.id),
             count_goods: selected.filter(s => s.count > 0).map(s => s.count),
             price_goods: selected.filter(s => s.count > 0).map(s => s.price * s.count),
-            final_price: comment === "menu" ? 100 : selected.filter(s => s.count > 0).reduce((previousValue, currentValue) => previousValue + (currentValue.count * currentValue.price), 0)
+            final_price: comment === selected.filter(s => s.count > 0).reduce((previousValue, currentValue) => previousValue + (currentValue.count * currentValue.price), 0)
         }).then(res => {
             setSelected([])
             setOrdered(true)
+            setTimeout(()=>{
+                navigate("/")
+            }, 2000)
         })
     }
 

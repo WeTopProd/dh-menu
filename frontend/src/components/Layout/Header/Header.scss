@@ -14,10 +14,10 @@
     align-items: center;
     height: 80px;
     justify-content: space-between;
-    padding: 0 50px 0 34px;
+    padding: 0 30px 0 30px;
 
     &_link {
-      margin: 10px 30px 0 10px;
+      margin-top: 10px;
       width: auto;
 
       img {
@@ -25,7 +25,7 @@
       }
     }
 
-    &_icons {
+    /*&_icons {
       display: flex;
       justify-content: end;
       align-items: center;
@@ -66,18 +66,12 @@
           line-height: 140%;
         }
       }
-    }
+    }*/
   }
 }
 
 
 //media
-
-@media screen and (max-width: 415px)  {
-  .header__container {
-    padding: 0 34px 0 34px;
-  }
-}
 
 @media screen and (max-width: 412px) {
   .header__container_link {}
@@ -91,7 +85,7 @@
   }
 }
 
-@media screen and (max-width: 370px) {
+@media screen and (max-width: 350px) {
   .header__container {
     padding: 0 20px 0 20px;
   }

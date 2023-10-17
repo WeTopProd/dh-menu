@@ -7,9 +7,6 @@ import {getGoods} from "../../redux/basket/thunk";
 
 const HookahModal = ({good, id, data, setIsShow}) => {
     //const [selectedType, setSelectedType] = useState(selected)
-    const  f = () => {
-        setIsShow(false)
-    }
    /* const closeModal = (e) => {
         setIsShow(false)
     }
@@ -27,8 +24,8 @@ const HookahModal = ({good, id, data, setIsShow}) => {
         }
     }*/
 
-    const [tobacco, setTobacco] = useState({tobacco_type: "", additive_type: "", additive_price: ''})
-    const [additivePrice, setAdditivePrice] = useState(0)
+    const [tobacco, setTobacco] = useState({tobacco_type: "",})
+    const [additivePrice, setAdditivePrice] = useState('')
     const {goods} = useSelector((state) => state.basket)
     const dispatch = useDispatch()
 
@@ -45,6 +42,7 @@ const HookahModal = ({good, id, data, setIsShow}) => {
     }, [tobacco])
 
     const setTobaccoType = (type) => {
+        setAdditivePrice(type)
         if (tobacco.tobacco_type === type) {
             setTobacco({
                 ...tobacco,
@@ -57,6 +55,9 @@ const HookahModal = ({good, id, data, setIsShow}) => {
             })
         }
     }
+
+    console.log(additivePrice, 'additivePrice')
+    console.log(tobacco, 'tobacco')
     return (
         <div className="hookahModal">
             <div className="hookahModal__desc">
@@ -71,7 +72,7 @@ const HookahModal = ({good, id, data, setIsShow}) => {
                         )
                     }
                 </div>
-                <BasketBtn type="colored-icon" id={id} data={data}/>
+                <BasketBtn type="colored-icon" id={id} data={data} tobacco={good.map(elem => elem)}/>
                 <button onClick={() => setIsShow(false)}>Закрыть</button>
             </div>
         </div>

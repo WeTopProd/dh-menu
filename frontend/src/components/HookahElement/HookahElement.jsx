@@ -44,17 +44,20 @@ const HookahElement = ({good, type}) => {
             <div className="classic hookahElement">
                 <div className="hookahElement__desc">
                     <p className="hookahElement__desc_name">{type}</p>
-                    <p className="hookahElement__desc_price">{good.price} руб.</p>
                 </div>
-                <div onClick={() => setIsShow(true)} className="basketButton__basket basketButton__basket-icon">
-                    <button>
-                        <img src={BasketIcon} alt=""/>
-                    </button>
-                </div>
+                {
+                    good.tobacco_type.map((tobacco_type, idc) =>
+                        <p key={idc}
+                           onClick={() => setTobaccoType(tobacco_type)}
+                           className={"hookahElement__tobaccoType" + ((getGood()?.tobacco_type ? getGood()?.tobacco_type === tobacco_type : tobacco.tobacco_type === tobacco_type) ? " hookahElement__tobaccoType_active" : '')}
+                        >
+                            {tobacco_type}
+                        </p>
+                    )
+                }
+                <p className="hookahElement__desc_price">{good.price} руб.</p>
+                <BasketBtn type="colored-icon" id={good.id} data={tobacco}/>
             </div>
-            {
-                isShow ? <HookahModal good={good.tobacco_type}  id={good.id} data={tobacco} setIsShow={setIsShow}/> : ''
-            }
         </div>
 
     );

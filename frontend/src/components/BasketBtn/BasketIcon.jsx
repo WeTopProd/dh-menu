@@ -12,12 +12,12 @@ const BasketIcon = () => {
     return (
         <>
             {
-                goods.length > 0 && isAuth ? <div onClick={()=>navigate("/basket")} className="basketIcon">
+                 <div onClick={()=>navigate("/basket")} className="basketIcon">
                     <img src={BasketIc} alt="icon"/>
                     {
                         goods.length > 0 && <div className="basketIcon_num">{goods.length}</div>
                     }
-                </div> : ''
+                </div>
             }
         </>
     );

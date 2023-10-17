@@ -14,6 +14,7 @@ import Stock from "../pages/Stock/Stock";
 import List from "../pages/List/List";
 import BusinessLunch from "../pages/BusinessLunch/BusinessLunch";
 import AdditionalServicesList from "../pages/AdditionalServicesList/AdditionalServicesList";
+import TaxiHome from "../pages/TaxiHome/TaxiHome";
 
 const Router = () => {
     return (
@@ -27,7 +28,10 @@ const Router = () => {
             <Route path="/Кальянная карта" element={<Hookah/>}/>
             <Route path="/Бизнес ланч" element={<BusinessLunch/>}/>
             <Route path="/Доп Услуги" element={<AdditionalServicesList/>}/>
+
             <Route path="/Приготовление праздничных блюд" element={<AdditionalServices/>}/>
+            <Route path="/Предзаказ" element={<Preorder/>}/>
+            <Route path="/Такси до дома" element={<TaxiHome/>}/>
 
             <Route path="/preorder" element={<Preorder/>}/>
             <Route path="/basket" element={<Basket/>}/>

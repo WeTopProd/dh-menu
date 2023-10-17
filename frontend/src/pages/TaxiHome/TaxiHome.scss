@@ -1,0 +1,95 @@
+.taxiHome {
+  background: url("../../assets/images/img/backgroundDop.png") top no-repeat;
+  background-size: cover;
+  padding: 15px;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    color: #FFF;
+    font-family: Prosto One;
+    font-size: 30px;
+  }
+
+  &__baner {
+    padding: 15px;
+    width: 92%;
+    height: 263.852px;
+    flex-shrink: 0;
+    border-radius: 11.813px;
+    background: #FFF;
+    margin-top: 84px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+
+    &_subtitle {
+      color: #000;
+      font-size: 20.673px;
+    }
+
+    &_form {
+      max-width: 255px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+
+      &_inputs {
+        display: flex;
+        justify-content: space-between;
+
+        &_data {
+          width: 61px!important;
+        }
+
+        &_time {
+          width: 69px!important;
+          margin-left: 23px;
+        }
+      }
+
+      &_input {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        input {
+          width: 153px;
+          border: none;
+          outline: none;
+          border-bottom: 1px solid black;
+        }
+
+        p {
+          color: #000;
+          font-weight: 600;
+          font-size: 9.801px;
+        }
+      }
+    }
+  }
+
+  &__button {
+    width: 168.612px;
+    padding: 7.087px 25.1px;
+    border-radius: 5.906px;
+    background: #F2994A;
+    color: #000;
+    border: none;
+    font-weight: 600;
+    font-size: 8.859px;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  &__orderActive {
+    width: 100%;
+    margin-top: 200px;
+  }
+}

@@ -8,21 +8,20 @@ const Preorder = () => {
     const [preorder, setPreorder] = useState(false)
     const {me} = useSelector((state) => state.auth)
     const navigate = useNavigate();
-
-
-    /*
-     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,8}$/i; // Почта
-     const oneUppLetterRegex = /(?=.*[a-z])/; // Одна прописная буква
-     const eightСharacterRegex = /[a-zA-Z0-9]{8,}/; // Не менее 8 символов
-     const oneLowercaseLetterRegex = /(?=.*[A-Z])/; // Одна строчная буква
-     const oneDigitRegex = /(?=.*\d)/; // Одна цифра
-     const registerPassRegex = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9]{8,}/; // Пароль
-     */
     const [name, setName] = useState(!!me.first_name ? me.first_name + " " + me.last_name : '');
     const [phone, setPhone] = useState(me.phone);
     const [phoneError, setPhoneError] = useState('');
     const [email, setEmail] = useState(me.email);
     const [emailError, setEmailError] = useState('');
+
+    /*
+   const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,8}$/i; // Почта
+   const oneUppLetterRegex = /(?=.*[a-z])/; // Одна прописная буква
+   const eightСharacterRegex = /[a-zA-Z0-9]{8,}/; // Не менее 8 символов
+   const oneLowercaseLetterRegex = /(?=.*[A-Z])/; // Одна строчная буква
+   const oneDigitRegex = /(?=.*\d)/; // Одна цифра
+   const registerPassRegex = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9]{8,}/; // Пароль
+   */
 
     const validatePhone = (phone) => {
         const phoneRegex = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){11}(\s*)?$/;
@@ -34,18 +33,6 @@ const Preorder = () => {
             return true;
         }
     };
-    const handlePhoneChange = (event) => {
-        const value = event.target.value;
-        setPhone(value);
-        validatePhone(value);
-    };
-
-    const goToPreorder = () => {
-        setPreorder(true)
-        setTimeout(()=>{
-            navigate("/")
-        }, 1000)
-    }
 
     const validateEmail = (email) => {
         const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,8}$/i;
@@ -57,6 +44,20 @@ const Preorder = () => {
             return true;
         }
     };
+
+    const handlePhoneChange = (event) => {
+        const value = event.target.value;
+        setPhone(value);
+        validatePhone(value);
+    };
+
+    const goToPreorder = () => {
+        setPreorder(true)
+        setTimeout(()=>{
+            navigate("/")
+        }, 2000)
+    }
+
     const handleEmailChange = (event) => {
         const value = event.target.value;
         setEmail(value);
@@ -76,7 +77,6 @@ const Preorder = () => {
                         <p>Предзаказ банкета</p>
                         <div>
                             <input disabled={!!me.first_name} value={name} type="text" onChange={handleNameChange} placeholder="Имя*"/>
-
                         </div>
                         <div>
                             <input disabled={!!me.phone} type="text" value={phone}  onChange={handlePhoneChange} placeholder="Телефон*"/>

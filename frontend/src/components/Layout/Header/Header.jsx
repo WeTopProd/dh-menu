@@ -10,13 +10,11 @@ const Header = () => {
     return (
         <header className="header">
             <div className="header__container">
+                <BasketIcon/>
                 <Link className="header__container_link" to="/">
                     <img className="header__container_link_logo" src={LogoIcon} alt="logo"/>
                 </Link>
-                <div className="header__container_icons">
-                    <BasketIcon/>
-                    <User/>
-                </div>
+                <User/>
             </div>
         </header>
     );

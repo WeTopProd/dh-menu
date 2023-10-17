@@ -21,7 +21,7 @@ const Basket = () => {
             navigate("/login")
         }
     }, [token]);
-    console.log(goods, 'goods')
+
     const changeNumTable = (e) => {
         dispatch(setNumTable(e.target.value))
     }
@@ -66,56 +66,57 @@ const Basket = () => {
             {
                 order
                     ? <RegisterActive desc="Заказ создан"/>
-                    : <div>
-                        <h1 className="basket__title">Корзина</h1>
-                        <div className="basket__desc">
-                            <p className="basket__desc_order">Заказ № {appState.length + 1}</p>
-                            <div className="basket__desc_list">
-                                {
-                                    goods.map((good, idx) =>
-                                        <div key={idx} className="basketList">
-                                            <div className="basketList__elem">
-                                                <p  className="basketList__elem_count">{good.count}</p>
-                                                <p className="basketList__elem_x">x</p>
-                                                <p>{good.goods.title} ({good.goods.calories}КЛ) - {good.price} руб.</p>
+                    :  goods.length >= 1
+                        ?  <div>
+                            <h1 className="basket__title">Корзина</h1>
+                            <div className="basket__desc">
+                                <p className="basket__desc_order">Заказ № {appState.length + 1}</p>
+                                <div className="basket__desc_list">
+                                    {
+                                        goods.map((good, idx) =>
+                                            <div key={idx} className="basketList">
+                                                <div className="basketList__elem">
+                                                    <p  className="basketList__elem_count">{good.count}</p>
+                                                    <p className="basketList__elem_x">x</p>
+                                                    <p>{good.goods.title} ({good.goods.calories}КЛ) - {good.price} руб.</p>
+                                                </div>
+                                                {
+                                                    good.tobacco_type ?
+                                                        <div className="basketList__elem">
+                                                            <p className='basketList__elem_desc'>Табак для кальяна: {good.tobacco_type}</p>
+                                                        </div> : ''
+                                                }
                                             </div>
-                                            {
-                                                good.tobacco_type ?
-                                                    <div className="basketList__elem">
-                                                        <p className='basketList__elem_desc'>Табак для кальяна: {good.tobacco_type}</p>
-                                                    </div> : ''
-                                            }
+                                        )
+                                    }
+                                </div>
+                                <p className="basket__desc_price">Сумма: {goods.reduce((prev, next) => prev + next.price,0)} руб.</p>
+                                <div className="basket__desc_table">
+                                    <p>Номер стола:</p>
+                                    <input type="number" value={num_table} onChange={changeNumTable}/>
+                                </div>
+                                <div className="basket__desc_persons">
+                                    <p>Кол-Во персон:</p>
+                                    <div className="basket__desc_persons_count">
+                                        <div className="basket__desc_persons_count_button"
+                                             onClick={() => changeNumPerson(-1)}>-
                                         </div>
-                                    )
-                                }
-                            </div>
-                            <p className="basket__desc_price">Сумма: {goods.reduce((prev, next) => prev + next.price,0)} руб.</p>
-                            <div className="basket__desc_table">
-                                <p>Номер стола:</p>
-                                <input type="number" value={num_table} onChange={changeNumTable}/>
-                            </div>
-                            <div className="basket__desc_persons">
-                                <p>Кол-Во персон:</p>
-                                <div className="basket__desc_persons_count">
-                                    <div className="basket__desc_persons_count_button"
-                                         onClick={() => changeNumPerson(-1)}>-
-                                    </div>
-                                    <p>{num_person}</p>
-                                    <div className="basket__desc_persons_count_button"
-                                         onClick={() => changeNumPerson(1)}>+
+                                        <p>{num_person}</p>
+                                        <div className="basket__desc_persons_count_button"
+                                             onClick={() => changeNumPerson(1)}>+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <textarea value={comment} onChange={changeComment} className="basket__desc_comment"
-                                      placeholder="Коментарий к заказу"
-                                      name="comment">
+                                <textarea value={comment} onChange={changeComment} className="basket__desc_comment"
+                                          placeholder="Коментарий к заказу"
+                                          name="comment">
                             </textarea>
-                            <div className="basket__desc_button">
-                                <button onClick={createOrder}>Заказать</button>
+                                <div className="basket__desc_button">
+                                    <button onClick={createOrder}>Заказать</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
+                        : <p className="basket__empty">Корзина пустая</p>
             }
         </div>
     );

@@ -7,6 +7,12 @@
   flex: 1;
   padding: 23px 15px 15px 15px;
 
+  &__empty {
+    text-align: center;
+    font-size: 26px;
+    color: #FFF;
+  }
+
   &__title {
     color: #FFF;
     font-family: Prosto One;

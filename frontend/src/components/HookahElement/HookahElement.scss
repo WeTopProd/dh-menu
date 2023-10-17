@@ -14,12 +14,21 @@
   box-shadow: 0 0 10px #78EAFF;
   margin-bottom: 20px;
 
+  &__tobaccoType {
+    color: #FFFFFF;
+
+    &_active {
+      color: #00d4ff;
+    }
+  }
+
   &__desc {
+
     &_price {
       color: #FFF;
       font-family: Lato;
       font-size: 23.532px;
-      margin-top: 92px;
+      margin: 92px 0 20px 0;
     }
 
     &_name {
@@ -28,30 +37,6 @@
       font-family: tangak;
       font-size: 23.532px;
       text-align: center;
-
-      &_item-active{
-        p{
-          color: #FF00A2;
-        }
-      }
-    }
-  }
-
-  .basketButton__basket-icon{
-    display: flex;
-    justify-content: center;
-
-    button {
-      background: rgba(87, 171, 190, 0.5);
-      width: 87px;
-      height: 44px;
-      padding: 5px 19px;
-      border-radius: 6.788px;
-      border: none;
-      box-shadow: 0 2.5454545021px 8.4848489761px 0 rgba(0, 0, 0, 0.15);
-      img{
-        height: 100%;
-      }
     }
   }
 
