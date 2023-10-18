@@ -21,7 +21,7 @@ const TaxiHome = () => {
         setPreorder(true)
         setTimeout(()=>{
             navigate("/")
-        }, 2000)
+        }, 3000)
     }
 
     const handleNameChange = (event) => {
@@ -33,7 +33,7 @@ const TaxiHome = () => {
         <div className="taxiHome">
             {
                 preorder
-                    ? <div className="taxiHome__orderActive"><RegisterActive desc="Заказ оформлен"/></div>
+                    ? <div className="taxiHome__orderActive"><RegisterActive desc="ТАКСИ ЗАБРОНИРОВАНО ОЖИДАЙТЕ ЗВОНКА ДЛЯ ПОДТВЕРЖДЕНИЯ БРОНИ"/></div>
                     :
                     <>
                         <p className="taxiHome__title">Такси до дома</p>
@@ -43,8 +43,8 @@ const TaxiHome = () => {
                                 <div className="taxiHome__baner_form_input">
                                     <p>Дата / Время</p>
                                     <div className="taxiHome__baner_form_inputs">
-                                        <input className="taxiHome__baner_form_inputs_data" type="text"/>
-                                        <input className="taxiHome__baner_form_inputs_time" type="text"/>
+                                        <input className="taxiHome__baner_form_inputs_data" type="text" placeholder="00.00.000г"/>
+                                        <input className="taxiHome__baner_form_inputs_time" type="text" placeholder="00:00"/>
                                     </div>
                                 </div>
                                 <div className="taxiHome__baner_form_input">
@@ -57,7 +57,7 @@ const TaxiHome = () => {
                                 </div>
                                 <div className="taxiHome__baner_form_input">
                                     <p>Адрес</p>
-                                    <input type="text"/>
+                                    <input type="text" placeholder="Адрес*"/>
                                 </div>
                             </div>
                             <button className="taxiHome__button" onClick={goToPreorder}>ПРЕДЗАКАЗ</button>
