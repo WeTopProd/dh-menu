@@ -3,9 +3,9 @@ import locale
 from datetime import datetime
 
 import requests
+from django.conf import settings
 from django.contrib.auth import authenticate
-from django.core.mail import EmailMessage, send_mail
-from django.shortcuts import get_object_or_404
+from django.core.mail import send_mail
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
@@ -17,7 +17,6 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from goods.models import Goods
-
 from .backends import PhoneBackend
 
 
@@ -83,8 +82,55 @@ def send_email(request):
     send_mail(
         f"ЗАКАЗ ОТ {last_name} {first_name}",
         message,
-        'info@tyteda.ru',
-        ['info@tyteda.ru'],
+        settings.DEFAULT_FROM_EMAIL,
+        [settings.DEFAULT_FROM_EMAIL],
+        fail_silently=False,
+    )
+    return Response({'success': 'Сообщение успешно отправлено'})
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def send_banquet(request):
+    date = request.data.get('date', '')
+    first_name = request.data.get('first_name', '')
+    phone = request.data.get('phone', '')
+    email_user = request.data.get('email_user', '')
+    event = request.data.get('event', '')
+    hall = request.data.get('hall', '')
+    count_people = request.data.get('count_people', '')
+    additional_services = request.data.get('additional_services', '')
+    message = (f"БРОНИРОВАНИЕ БАНКЕТА ОТ {first_name}\n\n"
+               f"НОМЕР ТЕЛЕФОНА: {phone}\nПОЧТА: {email_user}\nЗАЛ: {hall}\n"
+               f"КОЛИЧЕСТВО ГОСТЕЙ: {count_people}\nСОБЫТИЕ: {event}\n"
+               f"ДАТА БРОНИРОВАНИЯ: {date}\n\n"
+               f"ДОП. УСЛУГИ: {additional_services}")
+    send_mail(
+        f"БРОНИРОВАНИЕ БАНКЕТА ОТ {first_name}",
+        message,
+        settings.DEFAULT_FROM_EMAIL,
+        [settings.DEFAULT_FROM_EMAIL],
+        fail_silently=False,
+    )
+    return Response({'success': 'Сообщение успешно отправлено'})
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def send_taxi(request):
+    date = request.data.get('date', '')
+    time = request.data.get('time', '')
+    first_name = request.data.get('first_name', '')
+    phone = request.data.get('phone', '')
+    address = request.data.get('address', '')
+    message = (f"БРОНИРОВАНИЕ ТАКСИ ОТ {first_name}\n\n"
+               f"НОМЕР ТЕЛЕФОНА: {phone}\nДАТА И ВРЕМЯ БРОНИРОВАНИЯ: "
+               f"{date} {time}\nАДРЕС: {address}")
+    send_mail(
+        f"БРОНИРОВАНИЕ ТАКСИ ОТ {first_name}",
+        message,
+        settings.DEFAULT_FROM_EMAIL,
+        [settings.DEFAULT_FROM_EMAIL],
         fail_silently=False,
     )
     return Response({'success': 'Сообщение успешно отправлено'})
