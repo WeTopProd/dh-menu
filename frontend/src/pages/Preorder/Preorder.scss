@@ -24,23 +24,43 @@
     }
 
     div {
+      max-width: 329px;
+      width: 100%;
       display: flex;
-      flex-direction: column;
+      gap: 10px;
 
-      input {
-        max-width: 329px;
+      select {
+        width: 100%;
         border: none;
         background: none;
         color: #FFF;
         font-family: Prosto One;
-        font-size: 25px;
+        font-size: 22px;
+        font-weight: 400;
+        height: 35px;
+        outline: none;
+        border-bottom: 1px white solid;
+
+        option {
+          color: #000;
+          background: #F2994A;
+        }
+      }
+
+      input {
+        width: 100%;
+        border: none;
+        background: none;
+        color: #FFF;
+        font-family: Prosto One;
+        font-size: 22px;
         font-weight: 400;
         height: 35px;
         outline: none;
         border-bottom: 1px white solid;
 
         &::placeholder {
-          color: #c5c2c2;
+          color: #fff;
         }
       }
     }
@@ -70,13 +90,60 @@
   color: #ff0000;
 }
 
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  padding: 0!important;
+  outline: none!important;
+
+  &::placeholder {
+    font-size: 22px!important;
+  }
+}
+
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+  line-height: 1!important;
+  margin-top: -10px;
+  left: -17px!important;
+
+}
+
+.css-v4u5dn-MuiInputBase-root-MuiInput-root:after {
+  border-bottom: none!important;
+}
+
+.css-1pfv9in-MuiFormControl-root-MuiTextField-root label  {
+  margin-left: 0!important;
+  font-family: Prosto One!important;
+}
+
 
 //media
 
 @media screen and (max-width: 360px) {
   .preorder__container div input {
-    max-width: 280px;
+    max-width: 310px;
+  }
+
+  .preorder__container div select {
+    max-width: 310px;
   }
 }
 
+@media screen and (max-width: 330px) {
+  .preorder__container div input {
+    max-width: 290px;
+  }
+
+  .preorder__container div select {
+    max-width: 290px;
+  }
+}
+
+@media screen and (max-width: 355px) {
+  .preorder__container div input {
+    font-size: 19px;
+  }
+  .preorder__container div select {
+    font-size: 19px;
+  }
+}
 

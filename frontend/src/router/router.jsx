@@ -30,7 +30,7 @@ const Router = () => {
             <Route path="/Доп Услуги" element={<AdditionalServicesList/>}/>
 
             <Route path="/Приготовление праздничных блюд" element={<AdditionalServices/>}/>
-            <Route path="/Предзаказ" element={<Preorder/>}/>
+            <Route path="/Предзаказ банкета" element={<Preorder/>}/>
             <Route path="/Такси до дома" element={<TaxiHome/>}/>
 
             <Route path="/preorder" element={<Preorder/>}/>

@@ -59,7 +59,7 @@ const AdditionalServicesOrder = () => {
             goods_id: selected.filter(s => s.count > 0).map(s => s.id),
             count_goods: selected.filter(s => s.count > 0).map(s => s.count),
             price_goods: selected.filter(s => s.count > 0).map(s => s.price * s.count),
-            final_price: comment === selected.filter(s => s.count > 0).reduce((previousValue, currentValue) => previousValue + (currentValue.count * currentValue.price), 0)
+            final_price: selected.filter(s => s.count > 0).reduce((previousValue, currentValue) => previousValue + (currentValue.count * currentValue.price), 0)
         }).then(res => {
             setSelected([])
             setOrdered(true)

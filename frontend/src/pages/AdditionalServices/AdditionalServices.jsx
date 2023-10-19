@@ -42,9 +42,7 @@ const AdditionalServices = () => {
                     Мы замаринуем и приготовим ваше мясо на мангале на вертеле с нежностью и вниманием к каждой детали.
                 </p>
                 <p className="additionalServices__container_desc">
-                    Наши повара - настоящие мастера своего дела,
-                    они заботятся о выборе  приправ и специй,
-                    чтобы вкус был настоящим кулинарным открытием.
+                    Наши повара - настоящие мастера своего дела!
                 </p>
                 <div className="additionalServices__container_items">
                     <ul className={"additionalServices__container_items_elem"}>
@@ -55,7 +53,7 @@ const AdditionalServices = () => {
                         }
                     </ul>
                 </div>
-                <p className="additionalServices__container_descOrder">Заказывать за 3 дня по предоплате</p>
+                <p className="additionalServices__container_descOrder">Заказывать за 3 дня</p>
                 <button onClick={onClick}>Заказать</button>
             </div>
         </div>

@@ -6,10 +6,6 @@
   display: flex;
   flex-direction: column;
 
-  &__elem {
-    font-size: 26px!important;
-  }
-
   &__container {
     flex: 1;
     display: flex;
@@ -43,7 +39,7 @@
 
       &_desc {
         color: #FFF;
-        font-size: 40px;
+        font-size: 26px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
