@@ -61,7 +61,7 @@ class GoodsSubtype(models.Model):
     class Meta:
         verbose_name = 'Тип товара'
         verbose_name_plural = 'Типы товаров'
-        ordering = ['name']
+        ordering = ['pk']
 
     def __str__(self):
         return self.name
@@ -91,7 +91,7 @@ class HookahTobacco(models.Model):
     class Meta:
         verbose_name = 'Тип табакаа'
         verbose_name_plural = 'Типы табаков'
-        ordering = ['name']
+        ordering = ['pk']
 
     def __str__(self):
         return self.name
@@ -173,7 +173,7 @@ class Goods(models.Model):
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
-        ordering = ['pk']
+        ordering = ['title']
 
     def __str__(self):
         return f'Товар {self.title}'
