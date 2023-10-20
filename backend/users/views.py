@@ -103,7 +103,7 @@ def send_banquet(request):
     message = (f"БРОНИРОВАНИЕ БАНКЕТА ОТ {first_name}\n\n"
                f"НОМЕР ТЕЛЕФОНА: {phone}\nПОЧТА: {email_user}\nЗАЛ: {hall}\n"
                f"КОЛИЧЕСТВО ГОСТЕЙ: {count_people}\nСОБЫТИЕ: {event}\n"
-               f"ДАТА БРОНИРОВАНИЯ: {date}\n\n"
+               f"ДАТА И ВРЕМЯ БРОНИРОВАНИЯ: {date}\n\n"
                f"ДОП. УСЛУГИ: {additional_services}")
     send_mail(
         f"БРОНИРОВАНИЕ БАНКЕТА ОТ {first_name}",
