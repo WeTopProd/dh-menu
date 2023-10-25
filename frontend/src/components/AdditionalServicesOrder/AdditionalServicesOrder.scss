@@ -7,6 +7,22 @@
   flex-direction: column;
   justify-content: center;
 
+  &__price {
+    width: 100%;
+    display: flex;
+    margin-top: 35px;
+    gap: 21px;
+
+    /*p:first-child {
+      text-decoration: underline;
+    }*/
+
+    p {
+      font-size: 20px;
+      color: #FFFFFF;
+    }
+  }
+
   &__desc {
     display: flex;
     flex-direction: column;
@@ -60,9 +76,9 @@
     }
 
     &_button {
-      width: 160px;
       height: 49px;
       display: flex;
+      padding: 0 15px;
       justify-content: center;
       align-items: center;
       border-radius: 20px;

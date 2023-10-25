@@ -11,15 +11,21 @@
 
     a {
 
-      &:nth-child(8) {
+      &:nth-child(6) {
         p {
           margin-left: 50px;
         }
       }
 
-      &:nth-child(1) {
+      &:nth-child(7) {
         p {
-          margin-left: 50px;
+          margin-left: 60px;
+        }
+      }
+
+      &:nth-child(8) {
+        img {
+         width: 30px;
         }
       }
     }
@@ -44,7 +50,6 @@
         width: 100%;
         color: #FFF;
         font-size: 25px;
-        text-transform: capitalize;
       }
     }
   }
@@ -53,65 +58,24 @@
 
 //media
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 380px) {
+  .main__container_item p {
+    font-size: 22px;
+  }
+
   .main__container {
     a {
-      &:nth-child(10) {
+      &:nth-child(6) {
         p {
-          font-size: 23px;
-          margin-left: 30px;
-        }
-      }
-
-      &:nth-child(5) {
-        p {
-          margin-left: 30px;
-        }
-      }
-
-      &:nth-child(8) {
-        p {
-          font-size: 22px;
           margin-left: 60px;
-        }
-      }
-
-      &:nth-child(1) {
-        p {
-          font-size: 23px;
-          margin-left: 55px;
         }
       }
     }
   }
 }
 
-@media screen and (max-width: 360px) {
-  .main__container {
-    a {
-      &:nth-child(10) {
-        p {
-          font-size: 20px;
-        }
-      }
-
-      &:nth-child(5) {
-        p {
-          font-size: 20px;
-        }
-      }
-
-      &:nth-child(8) {
-        p {
-          font-size: 18px;
-        }
-      }
-
-      &:nth-child(1) {
-        p {
-          font-size: 19px;
-        }
-      }
-    }
+@media screen and (max-width: 340px) {
+  .main__container_item p {
+    font-size: 20px;
   }
 }

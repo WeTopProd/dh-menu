@@ -5,6 +5,7 @@ import {basketApi} from "./basket";
 import {orderApi} from "./order";
 import {sendOrderApi} from "./sendOrder";
 import {sendPreorder, sendPreorderApi} from "./preorder";
+import {sendTaxiHomeApi} from "./taxiHome/idex";
 
 export const api = {
     authApi,
@@ -13,5 +14,6 @@ export const api = {
     basketApi,
     orderApi,
     sendOrderApi,
-    sendPreorderApi
+    sendPreorderApi,
+    sendTaxiHomeApi
 }

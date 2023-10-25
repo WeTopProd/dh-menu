@@ -1,28 +1,39 @@
 .card__container_items {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 18px;
-  margin-top: 10px;
+  justify-content: space-around;
+  margin-top: 19px;
   width: 100%;
   transition: all 0.1s ease-out;
 
   .card {
-    width: 183px;
-    min-height: 331px;
-    border-radius: 15px;
-    background: rgba(0, 0, 0, 0.7);
+    width: 158px;
+    height: 218.625px;
+    border-radius: 79.255px 79.255px 7.53px 7.53px;
+    background: #EAEAEA;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 7px;
-    transition: flex 1s ease-out;
+    margin-bottom: 60px;
+    padding-top: 7px;
+    transition: 1.5s;
+
+    .card__img {
+      border-radius: 50%;
+      width: 145px;
+      height: 145px;
+      transform: rotate(0deg);
+      transition: 1.5s;
+    }
 
     &__active {
-      width: 100%;
-      padding: 0 10px;
+      height: 300px;
       transition: 1.5s;
 
+      &_img {
+        transform: rotate(360deg)!important;
+        transition: 1.5s;
+      }
     }
 
     &__desc {
@@ -30,66 +41,24 @@
       width: 100%;
 
       &_name {
-        color: #FFF;
         font-family: Prosto One;
-        font-size: 10px;
-        font-style: normal;
-        font-weight: 400;
-        max-width: 159px;
-        width: 100%;
-        min-height: 25.6px;
-        margin-top: 6px;
-        line-height: 128%;
+        text-align: center;
+        font-size: 8px;
+        font-weight: 700;
+        margin-top: 10px;
+        text-transform: uppercase;
       }
 
       &_price {
         display: flex;
         justify-content: space-between;
-        max-width: 175px;
-        width: 100%;
-        margin-bottom: 10px;
-        margin-top: 25px;
+        align-items: center;
+        margin-top: 10px;
+        padding: 0 6px;
 
-
-        p:first-child {
-          font-size: 15px;
-          margin-left: 8px;
-        }
-
-        p {
-          color: #FFF;
+        &_text {
+          font-size: 12px;
           font-family: Prosto One;
-          font-size: 14px;
-        }
-      }
-    }
-
-    &__img {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      max-width: 167px;
-      width: 100%;
-      min-height: 197.204px;
-      border-radius: 15px;
-      background: #D9D9D9;
-      margin-top: 8px;
-      transition: 1.5s;
-      cursor: pointer;
-
-      img {
-        width: 150px;
-      }
-
-      &_active {
-        max-width: 100%;
-        width: 100%;
-        min-height: 279px;
-
-        img {
-          scale: 1.7;
-          height: auto;
-          transition: 1.5s;
         }
       }
     }
@@ -100,20 +69,16 @@
 
       &_title {
         width: 100%;
-        display: flex;
-        justify-content: space-between;
-        margin-top: 10px;
-
-        p {
-          color: #FFF;
-          font-size: 20px;
-        }
       }
 
       &_compound {
-        color: #FFF;
         font-size: 13px;
         margin-top: 10px;
+        font-family: system-ui;
+      }
+
+      &_weight {
+        font-size: 13px;
         font-family: system-ui;
       }
 
@@ -123,11 +88,6 @@
         align-items: start;
         margin: 25px 0 6px 0;
         height: 35px;
-
-        p {
-          color: #FFF;
-          font-size: 20px;
-        }
       }
     }
   }
@@ -135,7 +95,13 @@
 
 
 //media
-
+@media screen and (max-width: 360px) {
+  .card__container_items {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
 
 
 @media screen and (max-width: 350px) {

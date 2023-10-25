@@ -27,7 +27,8 @@
       max-width: 329px;
       width: 100%;
       display: flex;
-      gap: 10px;
+      gap: 34px;
+      overflow: hidden!important;
 
       select {
         width: 100%;
@@ -35,7 +36,7 @@
         background: none;
         color: #FFF;
         font-family: Prosto One;
-        font-size: 22px;
+        font-size: 20px;
         font-weight: 400;
         height: 35px;
         outline: none;
@@ -53,7 +54,7 @@
         background: none;
         color: #FFF;
         font-family: Prosto One;
-        font-size: 22px;
+        font-size: 20px;
         font-weight: 400;
         height: 35px;
         outline: none;
@@ -90,6 +91,14 @@
   color: #ff0000;
 }
 
+label+.css-v4u5dn-MuiInputBase-root-MuiInput-root {
+  margin-top: 0!important;
+}
+
+.css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {
+  top: -15px!important;
+}
+
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
   padding: 0!important;
   outline: none!important;
@@ -115,12 +124,38 @@
   font-family: Prosto One!important;
 }
 
+.css-4jnixx-MuiStack-root>:not(style)~:not(style) {
+  margin-top: 0!important;
+}
+
+.css-vcu4xc-MuiFormControl-root-MuiTextField-root label {
+  color: #fff;
+  font-size: 25px!important;
+  font-family: sans-serif!important;
+  margin-left: 0!important;
+}
+
+.css-v4u5dn-MuiInputBase-root-MuiInput-root:before {
+  border-bottom: 1px white solid!important;
+}
+.css-1x51dt5-MuiInputBase-input-MuiInput-input {
+  padding:0 0 4px 0!important;
+}
+
+.css-4jnixx-MuiStack-root {
+  padding-top: 0!important;
+}
+
 
 //media
 
 @media screen and (max-width: 360px) {
   .preorder__container div input {
     max-width: 310px;
+  }
+
+  .preorder__container p {
+    font-size: 26px;
   }
 
   .preorder__container div select {
@@ -138,12 +173,12 @@
   }
 }
 
-@media screen and (max-width: 355px) {
+@media screen and (max-width: 360px) {
   .preorder__container div input {
-    font-size: 19px;
+    font-size: 17px;
   }
   .preorder__container div select {
-    font-size: 19px;
+    font-size: 17px;
   }
 }
 

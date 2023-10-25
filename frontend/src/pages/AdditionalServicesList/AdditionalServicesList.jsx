@@ -5,14 +5,13 @@ import {api} from "../../api";
 
 const AdditionalServicesList = () => {
     const [types, setTypes] = useState([]);
-    const pageName = "Доп Услуги"
+    const pageName = "Доп услуги"
 
     useEffect(() => {
         api.goodsApi.getGoodsSubTypes({type: pageName}).then(resp => {
             setTypes(resp.data)
         })
     }, []);
-    console.log(types.map(good => good.name.length), 'good.title.length')
 
     return (
         <div className="additionalServicesList">
@@ -22,10 +21,7 @@ const AdditionalServicesList = () => {
                         return (
                             <Link key={i} to={`/${elem.name}`}>
                                 <div className="additionalServicesList__container_item">
-                                    <p className={elem.name.length > 20 ?
-                                        "additionalServicesList__container_item_desc additionalServicesList__elem" :
-                                        "additionalServicesList__container_item_desc"}
-                                    >
+                                    <p className="additionalServicesList__container_item_desc">
                                         {elem.name}
                                     </p>
                                 </div>

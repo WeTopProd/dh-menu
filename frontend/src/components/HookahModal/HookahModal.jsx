@@ -56,8 +56,6 @@ const HookahModal = ({good, id, data, setIsShow}) => {
         }
     }
 
-    console.log(additivePrice, 'additivePrice')
-    console.log(tobacco, 'tobacco')
     return (
         <div className="hookahModal">
             <div className="hookahModal__desc">

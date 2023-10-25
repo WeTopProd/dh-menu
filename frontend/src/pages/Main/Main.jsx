@@ -13,7 +13,7 @@ const Main = () => {
             setTypes(resp.data)
         })
     }, []);
-    console.log(api, 'api')
+
     const listUrl = (name) => `/list/${pageName}/${name}`
     return (
         <div className="main">

@@ -27,7 +27,7 @@ const Router = () => {
 
             <Route path="/Кальянная карта" element={<Hookah/>}/>
             <Route path="/Бизнес ланч" element={<BusinessLunch/>}/>
-            <Route path="/Доп Услуги" element={<AdditionalServicesList/>}/>
+            <Route path="/Доп услуги" element={<AdditionalServicesList/>}/>
 
             <Route path="/Приготовление праздничных блюд" element={<AdditionalServices/>}/>
             <Route path="/Предзаказ банкета" element={<Preorder/>}/>

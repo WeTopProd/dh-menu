@@ -1,24 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import "./AdditionalServices.scss"
 import {api} from "../../api";
-import AdditionalGif from "../../assets/images/additionalServices/addServices (1).png"
+import AdditionalGif from "../../assets/images/additionalServices/additionalserv.png"
 import {useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
 import AdditionalServicesOrder from "../../components/AdditionalServicesOrder/AdditionalServicesOrder";
 
 const AdditionalServices = () => {
     const [goods, setGoods] = useState([])
     const [isShowModal, setIsShowModal] = useState(false)
     const {isAuth} = useSelector((state) => state.auth)
-    const navigate = useNavigate();
-
-    const onClick = () =>{
-        if (isAuth){
-            setIsShowModal(true)
-        }else{
-            navigate("/login")
-        }
-    }
 
     useEffect(()=>{
         setIsShowModal(false)
@@ -26,7 +16,7 @@ const AdditionalServices = () => {
 
 
     useEffect(() => {
-        api.goodsApi.getList({type: "Доп Услуги"}).then(res => {
+        api.goodsApi.getList({type: "Доп услуги"}).then(res => {
             setGoods(res.data.results)
         })
     }, [])
@@ -38,7 +28,7 @@ const AdditionalServices = () => {
                 <img src={AdditionalGif} alt="AdditionalGif"/>
                 <p className="additionalServices__container_desc">
                     Наша услуга представляет собой идеальное решение для занятых людей,
-                    ценящих вкус и качество в каждом приеме пищи, но не имеющих достаточно времени на подготовку.
+                    ценящих вкус и качество в каждом приеме пищи, но не имеющих достаточно времени на приготовление.
                     Мы замаринуем и приготовим ваше мясо на мангале на вертеле с нежностью и вниманием к каждой детали.
                 </p>
                 <p className="additionalServices__container_desc">
@@ -54,7 +44,7 @@ const AdditionalServices = () => {
                     </ul>
                 </div>
                 <p className="additionalServices__container_descOrder">Заказывать за 3 дня</p>
-                <button onClick={onClick}>Заказать</button>
+                <button onClick={() =>  setIsShowModal(true)}>Оформить заказ</button>
             </div>
         </div>
             : <AdditionalServicesOrder />

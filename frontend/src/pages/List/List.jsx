@@ -18,7 +18,7 @@ const List = () => {
     return (
         <div className="list">
             <div className="list__title">
-                <p>{subtype}</p>
+                <p>{subtype === "Напитки" ? "Напитки Б/А" : subtype}</p>
             </div>
             {
                 animation.length > 0 && animation[0].gif != null ?
@@ -27,7 +27,6 @@ const List = () => {
                     </div>
                     : ''
             }
-
             <Card data={{type: type, subtype: subtype}}/>
         </div>
     );

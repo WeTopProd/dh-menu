@@ -1,17 +1,9 @@
 .taxiHome {
-  background: url("../../assets/images/img/backgroundDop.png") top no-repeat;
-  background-size: cover;
   padding: 15px;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
   align-items: center;
-
-  &__title {
-    color: #FFF;
-    font-family: Prosto One;
-    font-size: 30px;
-  }
 
   &__baner {
     padding: 15px;
@@ -20,16 +12,22 @@
     flex-shrink: 0;
     border-radius: 11.813px;
     background: #FFF;
-    margin-top: 84px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 
-
-    &_subtitle {
+    &_title {
       color: #000;
       font-size: 20.673px;
+      margin: 44px 0 33px 0;
+    }
+
+    &_desc {
+      margin: 30px 0 26px 0;
+      text-align: center;
+      font-size: 9px;
+      max-width: 250px;
     }
 
     &_form {
@@ -40,8 +38,46 @@
       gap: 25px;
 
       &_inputs {
-        display: flex;
-        justify-content: space-between;
+        div {
+          display: flex!important;
+          overflow: hidden!important;
+        }
+
+        .MuiStack-root css-4jnixx-MuiStack-root {
+          display: flex;
+        }
+        .css-4jnixx-MuiStack-root {
+          -webkit-flex-direction: row!important;
+          flex-direction: row!important;
+          padding: 0!important;
+          width: 152px!important;
+        }
+
+        .css-4jnixx-MuiStack-root>.MuiTextField-root {
+          min-width: 85px!important;
+        }
+
+        .css-1x51dt5-MuiInputBase-input-MuiInput-input {
+          padding: 0!important;
+          margin-right: 20px!important;
+        }
+
+        .css-v4u5dn-MuiInputBase-root-MuiInput-root:before {
+          border-bottom: none!important;
+        }
+
+        .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {
+          line-height: 1!important;
+          -webkit-transform: translate(0, 0) scale(1)!important;
+          font-weight: bold!important;
+          font-size: 10px!important;
+          top: 6px!important;
+        }
+
+        label+.css-v4u5dn-MuiInputBase-root-MuiInput-root {
+          margin-top: 0!important;
+
+        }
 
         &_data {
           width: 61px!important;
@@ -93,10 +129,5 @@
     font-style: normal;
     text-transform: uppercase;
     letter-spacing: 1px;
-  }
-
-  &__orderActive {
-    width: 100%;
-    margin-top: 200px;
   }
 }

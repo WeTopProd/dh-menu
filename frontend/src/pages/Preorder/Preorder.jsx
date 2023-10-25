@@ -4,10 +4,11 @@ import RegisterActive from "../../components/RegisterActive/RegisterActive";
 import {useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {api} from "../../api";
-import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
+import {DatePicker, LocalizationProvider, TimePicker} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from 'dayjs'
 import isBetween from 'dayjs/plugin/isBetween'
+import {DemoContainer} from "@mui/x-date-pickers/internals/demo";
 
 dayjs.extend(isBetween)
 
@@ -21,10 +22,11 @@ const Preorder = () => {
     const [eventDesc, setEventDesc] = useState('');
     const [roomSelection, setRoomSelection] = useState('');
     const [date, setDate] = useState('');
-    const [timeFrom, setTimeFrom] = useState('');
-    const [timeBefore, setTimeBefore] = useState('');
+    const [time, setTime] = useState('');
     const [countPeople, setCountPeople] = useState('');
     const [comment, setComment] = useState('');
+
+    let timeWatch = time.slice(1, 3)
 
     let arrPreorder = [
         name,
@@ -33,75 +35,76 @@ const Preorder = () => {
         eventDesc,
         roomSelection,
         date,
-        timeFrom,
-        timeBefore,
+        time,
         countPeople,
         roomSelection === 'Зал' && countPeople >= 27 ? '' : 27,
         roomSelection === 'Веранда' && countPeople >= 51 ? '' : 51,
-        roomSelection === 'Зал и веранда' && countPeople >= 77 ? '' : 77
     ]
     let arrLenght = arrPreorder.map(e => e.length)
     let arrBoolean =  arrLenght.includes(0);
 
+    const arrWatch = ["04", "05", "06", "07", "08", "09", "10"]
+
     const createOrder = () => {
         if (!name) {
-            alert('name:')
+            alert('Имя: Вы не указали имя')
             return
         }
         if (!phone) {
-            alert('phone:')
+            alert('Телефон: Вы не указали номер телефона')
             return
         }
         if (!email) {
-            alert('email:')
+            alert('Почта: Вы не указали почту')
             return
         }
         if (!eventDesc) {
-            alert('eventDesc:')
+            alert('Событие: Вы не указали тип события ')
             return
         }
         if (!roomSelection) {
-            alert('roomSelection:')
+            alert('Зал или Веранда: Укажите тип помещения ')
             return
         }
         if (!date) {
-            alert('date:')
+            alert('Дата: Вы не указали дату')
             return
         }
-        if (!timeFrom) {
-            alert('timeFrom:')
-            return
-        }
-        if (!timeBefore) {
-            alert('timeBefore:')
+        if (!time) {
+            alert('Время : Вы не указали время')
             return
         }
         if (!countPeople) {
-            alert('countPeople:')
+            alert('Число гостей: Введите число гостей')
             return
         }
         if (roomSelection === 'Зал' && countPeople >= 27) {
-            alert('Зал:')
+            alert('Зал: Количество гостей в зале не должно превышать  26 человек')
             return
         }
         if (roomSelection === 'Веранда' && countPeople >= 51) {
-            alert('Веранда:')
-            return
-        }
-        if (roomSelection === 'Зал и веранда' && countPeople >= 77) {
-            alert('Зал и веранда:')
-            return
-        }
-        if (!comment) {
-            alert('comment:')
+            alert('Веранда: Количество гостей на веранда не должно превышать  50 человек')
             return
         }
     }
 
+    useEffect(() => {
+        if (arrWatch.includes(timeWatch.toString())) {
+            alert('Некоректное время: Заведение работает с 11:00 до 3:00')
+            return
+        }
+    }, [timeWatch])
+
+   /* const dateDay = new Intl.DateTimeFormat("ru", {day: "numeric"}).format(new Date())
+    const dateMonth = new Intl.DateTimeFormat("ru", {month: "numeric"}).format(new Date())
+    const dateYear = new Intl.DateTimeFormat("ru", {year: "numeric"}).format(new Date())
+    console.log(dateDay,dateMonth,dateYear, 'dateDay,dateMonth,dateYear')*/
+
     const createPreorder = () => {
-        arrBoolean ?  createOrder()
+        arrWatch.includes(timeWatch.toString()) ?  alert('Некоректное время: Заведение работает с 11:00 до 3:00')
+        : arrBoolean ?  createOrder()
         : api.sendPreorderApi.createPreorder({
-            date: date + ` time: с ${timeFrom} до ${timeBefore}`,
+            date: date + ` time: ${time}`,
             first_name: name,
             phone: phone,
             email_user: email,
@@ -110,13 +113,13 @@ const Preorder = () => {
             count_people:countPeople,
             additional_services: comment
         }).then(res => {
-            console.log(res, 'resssssssss')
-            /*setPreorder(true)
+            setPreorder(true)
             setTimeout(()=>{
                 navigate("/")
-            }, 2000)*/
+            }, 2000)
         })
     }
+    const yesterday = dayjs().subtract(1, 'day');
 
     return (
         <div className="preorder">
@@ -126,13 +129,13 @@ const Preorder = () => {
                     :  <div className="preorder__container">
                         <p>Предзаказ банкета</p>
                         <div>
-                            <input disabled={!!me.first_name} value={name} type="text" onChange={e => setName(e.target.value)} placeholder="Имя*"/>
+                            <input value={name} type="text" onChange={e => setName(e.target.value)} placeholder="Имя*"/>
                         </div>
                         <div>
-                            <input disabled={!!me.phone} type="text" value={me.phone}  onChange={e => setPhone(e.target.value)} placeholder="Телефон*"/>
+                            <input type="text" value={me.phone}  onChange={e => setPhone(e.target.value)} placeholder="Телефон*"/>
                         </div>
                         <div>
-                            <input disabled={!!me.email} type="text" value={me.email} onChange={e => setEmail(e.target.value)} placeholder="Почта*"/>
+                            <input type="text" value={me.email} onChange={e => setEmail(e.target.value)} placeholder="Почта*"/>
                         </div>
                         <div>
                             <input type="text" onChange={e => setEventDesc(e.target.value)} placeholder="Событие*"/>
@@ -142,90 +145,58 @@ const Preorder = () => {
                                 onChange={e => setRoomSelection(e.target.value)}
                                 aria-invalid="false"
                             >
-                                <option disabled selected>
-                                    Зал/Веранда*
-                                </option>
+                                <option disabled selected>Зал/Веранда*</option>
                                 <option value="Зал">Зал</option>
                                 <option value="Веранда">Веранда</option>
-                                <option value="Зал и веранда">Зал и веранда</option>
                             </select>
                         </div>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DatePicker
-                                // !Убрать border у data and time
-                                slotProps={{ textField: { variant: "standard" } }}
-                                sx={{
-                                    width: "100%",
-                                    /*svg: {display: "none"},*/
-                                    input: { color: "#fff" },
+                            <DemoContainer components={["TimePicker"]}>
+                                <DatePicker
+                                    // !Убрать border у data and time
+                                    disablePast
+                                    slotProps={{ textField: { variant: "standard" } }}
+                                    sx={{
+                                        width: "100%",
+                                        /*svg: {display: "none"},*/
+                                        input: { color: "#fff" },
 
-                                    label: {
-                                        color: "#fff",
-                                        fontSize: "22px",
-                                        marginLeft: "6px",
-                                    },
-                                }}
-                                label="Дата*"
-                                variant="standard"
-                                onChange={e => setDate(`${e["$d"]}`.slice(4, 15))}
-                            />
+                                        label: {
+                                            color: "#fff",
+                                            fontSize: "22px",
+                                            marginLeft: "6px",
+                                        },
+                                    }}
+                                    label={date ? "" : "Дата*"}
+                                    variant="standard"
+                                    onChange={e => setDate(`${e["$d"]}`.slice(4, 15))}
+                                />
+                                <TimePicker
+                                    // !Убрать border у data and time
+                                    slotProps={{ textField: { variant: "standard" } }}
+                                    sx={{
+                                        width: "100%",
+                                        svg: { color: "#fff" },
+                                        input: { color: "#fff" },
+                                        label: {
+                                            color: "#fff",
+                                            fontSize:
+                                                "calc(15px + 12 * ((100vw - 320px) / (1920 - 320)))",
+                                            fontFamily: "Lato",
+                                            marginLeft: "6px",
+                                        },
+                                    }}
+                                    label={time ? "" : "Время*"}
+                                    ampm={false}
+                                    onChange={e => setTime(`${e["$d"]}`.slice(15, 21))}
+                                />
+                            </DemoContainer>
                         </LocalizationProvider>
-                        <div>
-                            <select
-                                onChange={e => setTimeFrom(e.target.value)}
-                                aria-invalid="false"
-                            >
-                                <option disabled selected>
-                                    время с *
-                                </option>
-                                <option value="11 : 00">11 : 00</option>
-                                <option value="12 : 00">12 : 00</option>
-                                <option value="13 : 00">13 : 00</option>
-                                <option value="14 : 00">14 : 00</option>
-                                <option value="15 : 00">15 : 00</option>
-                                <option value="16 : 00">16 : 00</option>
-                                <option value="17 : 00">17 : 00</option>
-                                <option value="18 : 00">18 : 00</option>
-                                <option value="19 : 00">19 : 00</option>
-                                <option value="20 : 00">20 : 00</option>
-                                <option value="21 : 00">21 : 00</option>
-                                <option value="22 : 00">22 : 00</option>
-                                <option value="23 : 00">23 : 00</option>
-                                <option value="00 : 00">00 : 00</option>
-                                <option value="01 : 00">01 : 00</option>
-                                <option value="02 : 00">02 : 00</option>
-
-                            </select>
-                            <select
-                                onChange={e => setTimeBefore(e.target.value)}
-                                aria-invalid="false"
-                            >
-                                <option disabled selected>
-                                    время до *
-                                </option>
-                                <option value="12 : 00">12 : 00</option>
-                                <option value="13 : 00">13 : 00</option>
-                                <option value="14 : 00">14 : 00</option>
-                                <option value="15 : 00">15 : 00</option>
-                                <option value="16 : 00">16 : 00</option>
-                                <option value="17 : 00">17 : 00</option>
-                                <option value="18 : 00">18 : 00</option>
-                                <option value="19 : 00">19 : 00</option>
-                                <option value="20 : 00">20 : 00</option>
-                                <option value="21 : 00">21 : 00</option>
-                                <option value="22 : 00">22 : 00</option>
-                                <option value="23 : 00">23 : 00</option>
-                                <option value="00 : 00">00 : 00</option>
-                                <option value="01 : 00">01 : 00</option>
-                                <option value="02 : 00">02 : 00</option>
-                                <option value="03 : 00">03 : 00</option>
-                            </select>
-                        </div>
                         <div>
                             <input type="number" onChange={e => setCountPeople(e.target.value)} placeholder="Число гостей*"/>
                         </div>
                         <div>
-                            <input type="text" onChange={e => setComment(e.target.value)} placeholder="Коментарий"/>
+                            <input type="text" onChange={e => setComment(e.target.value)} placeholder="Коментарий/необязательно"/>
                         </div>
                         <button onClick={createPreorder}>Оформить заказ</button>
                     </div>

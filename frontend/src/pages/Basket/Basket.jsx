@@ -58,6 +58,9 @@ const Basket = () => {
         }).then(res => {
             dispatch(getGoods())
             setOrder(true)
+            setTimeout(()=>{
+                navigate("/")
+            }, 2000)
         })
     }
 
@@ -112,7 +115,7 @@ const Basket = () => {
                                           name="comment">
                             </textarea>
                                 <div className="basket__desc_button">
-                                    <button onClick={createOrder}>Заказать</button>
+                                    <button onClick={createOrder}>Оформить заказ</button>
                                 </div>
                             </div>
                         </div>
