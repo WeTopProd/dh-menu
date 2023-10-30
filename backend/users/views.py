@@ -1,5 +1,4 @@
 import base64
-import locale
 from datetime import datetime
 
 import requests
@@ -54,7 +53,6 @@ class TokenCreateByPhoneView(APIView):
 def send_email(request):
     user = request.user
     now = datetime.now()
-    locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8')
     date = now.strftime("%d %B %Y, %A %H:%M")
     description = request.data.get('description', '')
     goods_ids = request.data.get('goods_id', [])
