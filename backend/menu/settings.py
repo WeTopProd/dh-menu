@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-_4@)@(9#&fahh(=%*2@483+hz!e(dof_$m0+o&9wakb29z9bvs'
 
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     ALLOWED_HOSTS = [
@@ -16,8 +16,8 @@ if DEBUG:
     ]
 else:
     ALLOWED_HOSTS = [
-        'frantsuz-menu.ru',
-        '134.0.116.27',
+        'dh-menu.ru',
+        '194.67.108.186',
     ]
 
 
@@ -84,10 +84,10 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'frantsuz_menu',
-            'USER': 'frantsuz_menu_user',
+            'NAME': 'dali_menu',
+            'USER': 'dali_user',
             'PASSWORD': '20031956',
-            'HOST': '134.0.116.27',
+            'HOST': '194.67.108.186',
             'PORT': '5432'
         }
     }
@@ -141,14 +141,7 @@ REST_FRAMEWORK = {
 }
 
 CORS_URLS_REGEX = r'^/api/.*$'
-if DEBUG:
-    CORS_ORIGIN_ALLOW_ALL = True
-else:
-    CORS_ALLOWED_ORIGINS = [
-        'https://134.0.116.27:3000',
-        'http://134.0.116.27:3000',
-        'http://127.0.0.1:8000'
-    ]
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 DJOSER = {
