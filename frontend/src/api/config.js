@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export const request = (method, url, data = {}, auth = true) => {
-    const api = "//127.0.0.1:8000/api"
+    const api = "//dh-menu.ru/api"
     return http(method, api + url + "/", data, auth).catch(error => {
         return Promise.reject(error)
     })
