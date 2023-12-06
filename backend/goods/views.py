@@ -1,3 +1,7 @@
+from datetime import datetime
+
+from django.conf import settings
+from django.core.mail import send_mail
 from django.db import transaction
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
@@ -8,14 +12,14 @@ from rest_framework.response import Response
 from rest_framework.validators import ValidationError
 
 from .filters import GoodsFilter, GoodsSubtypeFilter
-from .models import (Favorite, Goods, GoodsSubtype, GoodsType, Order,
-                     OrderItem, ShoppingCart, HookahAdditive)
+from .models import (Favorite, Goods, GoodsSubtype, GoodsType, HookahAdditive,
+                     Order, OrderItem, ShoppingCart)
 from .pagination import CustomPagination
 from .permissions import IsAdminOrReadOnly
 from .serializers import (FavoriteSerializer, GoodsSerializer,
                           GoodsSubtypeSerializer, GoodsTypeSerializer,
-                          OrderSerializer, ShoppingCartSerializer,
-                          ShortGoodsSerializer, HookahAdditiveSerializer)
+                          HookahAdditiveSerializer, OrderSerializer,
+                          ShoppingCartSerializer, ShortGoodsSerializer)
 
 
 class GoodsViewSet(viewsets.ModelViewSet):
@@ -176,6 +180,30 @@ class GoodsViewSet(viewsets.ModelViewSet):
             shopping_cart.delete()
 
         serializer = OrderSerializer(order)
+
+        now = datetime.now()
+        date = now.strftime("%d %B %Y, %A %H:%M")
+        message = (f"ЗАКАЗ ОТ {user.last_name} {user.first_name}\n\n"
+                   f"НОМЕР ТЕЛЕФОНА: {user.phone}\nПОЧТА: {user.email}\n"
+                   f"\nЗАКАЗ:\n"
+                   f"ДАТА ЗАКАЗА: {date}\nНОМЕР СТОЛА: {num_table}\n"
+                   f"КОЛИЧЕСТВО ЧЕЛОВЕК: {num_person}\nКОММЕНТАРИЙ: {comment}"
+                   f"\n\nСПИСОК ТОВАРОВ:\n")
+        i = 1
+        for good in order_items_to_create:
+            message += (f"ТОВАР {i}:\n"
+                        f"НАЗВАНИЕ: {good.goods}\n"
+                        f"КОЛИЧЕСТВО: {good.count}\n"
+                        f"ЦЕНА: {good.price}\n\n")
+            i += 1
+        message += f"ОБЩАЯ СУММА: {total_price}"
+        send_mail(
+            f"ЗАКАЗ ОТ {user.last_name} {user.first_name}",
+            message,
+            settings.DEFAULT_FROM_EMAIL,
+            [settings.DEFAULT_FROM_EMAIL],
+            fail_silently=False,
+        )
         return Response(data=serializer.data, status=status.HTTP_201_CREATED)
 
     @action(
